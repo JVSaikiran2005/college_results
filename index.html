@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Results Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 80%; /* Could be more responsive */
+            max-width: 500px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+            color: #333; /* Ensure text is readable */
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-close-button:hover,
+        .modal-close-button:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .dark .modal-content {
+            background-color: #2d3748; /* Dark mode background */
+            color: #e2e8f0; /* Dark mode text color */
+        }
+        .dark .modal-close-button {
+            color: #9ca3af;
+        }
+        .dark .modal-close-button:hover,
+        .modal-close-button:focus {
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-950 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col items-center p-4">
+
+    <h1 class="text-5xl font-extrabold text-indigo-800 dark:text-indigo-400 mb-8 mt-4 text-center drop-shadow-lg">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+            College Results Portal
+        </span>
+    </h1>
+
+    <!-- Main content area -->
+    <div class="flex flex-col md:flex-row gap-8 w-full max-w-6xl">
+        <!-- Student View Panel -->
+        <div class="flex-1 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-indigo-200 dark:border-gray-700">
+            <h2 class="text-3xl font-bold text-indigo-700 dark:text-indigo-300 mb-6 text-center">
+                Student Result View 🎓
+            </h2>
+            <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <input
+                    type="text"
+                    id="studentIdInput"
+                    placeholder="Enter Student ID (e.g., S101)"
+                    class="flex-1 p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-gray-100"
+                />
+                <button
+                    id="viewResultsButton"
+                    class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition duration-300 ease-in-out"
+                >
+                    View Results
+                </button>
+            </div>
+
+            <p id="studentResultsError" class="text-red-600 dark:text-red-400 text-center mb-4 hidden"></p>
+
+            <div id="studentResultDisplay" class="bg-indigo-50 dark:bg-gray-700 p-6 rounded-lg border border-indigo-200 dark:border-gray-600 hidden">
+                <h3 class="text-2xl font-semibold text-indigo-800 dark:text-indigo-200 mb-4 border-b pb-2 border-indigo-300 dark:border-gray-500">
+                    Results for <span id="resultStudentName"></span> (<span id="resultStudentId"></span>)
+                </h3>
+                <p class="mb-2"><strong class="text-indigo-700 dark:text-indigo-300">Academic Year:</strong> <span id="resultAcademicYear"></span></p>
+                <div class="mb-4">
+                    <p class="mb-2"><strong class="text-indigo-700 dark:text-indigo-300">Subjects:</strong></p>
+                    <ul id="resultSubjects" class="list-disc list-inside ml-4">
+                        <!-- Subjects will be injected here -->
+                    </ul>
+                </div>
+                <p class="mb-2"><strong class="text-indigo-700 dark:text-indigo-300">SGPA:</strong> <span id="resultSgpa" class="text-lg font-bold text-green-700 dark:text-green-400"></span></p>
+                <p><strong class="text-indigo-700 dark:text-indigo-300">CGPA:</strong> <span id="resultCgpa" class="text-lg font-bold text-green-700 dark:text-green-400"></span></p>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div class="flex-1 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-purple-200 dark:border-gray-700">
+            <h2 class="text-3xl font-bold text-purple-700 dark:text-purple-300 mb-6 text-center">
+                Admin Portal 🔑
+            </h2>
+
+            <div id="adminLoginSection" class="space-y-4">
+                <p class="text-gray-600 dark:text-gray-400 text-center">Log in to upload results.</p>
+                <input
+                    type="email"
+                    id="adminLoginEmail"
+                    placeholder="Admin Email"
+                    class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-gray-100"
+                />
+                <input
+                    type="password"
+                    id="adminLoginPassword"
+                    placeholder="Admin Password"
+                    class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-gray-100"
+                />
+                <button
+                    id="adminLoginButton"
+                    class="w-full px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:bg-purple-500 dark:hover:bg-purple-600 transition duration-300 ease-in-out"
+                >
+                    Admin Login
+                </button>
+                <p id="adminLoginError" class="text-red-600 dark:text-red-400 text-center hidden"></p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 text-center">
+                
+                </p>
+            </div>
+
+            <div id="adminPanelSection" class="space-y-6 hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <p class="text-green-600 dark:text-green-400 font-semibold">Logged in as Admin</p>
+                    <button
+                        id="adminLogoutButton"
+                        class="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 ease-in-out"
+                    >
+                        Logout
+                    </button>
+                </div>
+                <p class="text-gray-600 dark:text-gray-400 text-center mb-4">
+                    Upload student results as an **Excel (.xlsx)** or **CSV (.csv)** file.
+                    <br>
+                    Ensure columns include: `studentId`, `name`, `academicYear`, `sgpa`, `cgpa`, and individual subject marks like `SubjectName_Marks` (e.g., `Math_Marks`).
+                </p>
+                <input type="file" id="resultsFile" accept=".csv, .xlsx" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-gray-100 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100">
+
+                <button
+                    id="uploadResultsButton"
+                    class="w-full px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:bg-purple-500 dark:hover:bg-purple-600 transition duration-300 ease-in-out mt-4"
+                >
+                    Upload Results to Portal
+                </button>
+                <p id="adminUploadStatus" class="text-center hidden"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-12 text-gray-500 dark:text-gray-400 text-sm">
+        &copy; 2024 Engineering College Results Portal. All rights reserved.
+    </footer>
+
+    <!-- Custom Modal for messages -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-button" onclick="closeModal()">&times;</span>
+            <p id="modalMessage" class="text-lg text-center"></p>
+        </div>
+    </div>
+
+    <script>
+        // Define the backend URL (assuming Flask is running on localhost:5000)
+        const BACKEND_URL = 'http://localhost:5000';
+
+        // --- Utility Functions for Modal Messages ---
+        function showModal(message, isError = false) {
+            const modal = document.getElementById('messageModal');
+            const modalMessage = document.getElementById('modalMessage');
+            modalMessage.textContent = message;
+            if (isError) {
+                modalMessage.classList.add('text-red-600');
+                modalMessage.classList.remove('text-green-600');
+                modalMessage.classList.remove('dark:text-green-400');
+                modalMessage.classList.add('dark:text-red-400');
+            } else {
+                modalMessage.classList.add('text-green-600');
+                modalMessage.classList.remove('text-red-600');
+                modalMessage.classList.add('dark:text-green-400');
+                modalMessage.classList.remove('dark:text-red-400');
+            }
+            modal.style.display = 'flex'; // Use flex to center the modal content
+            setTimeout(() => { // Automatically close modal after 3 seconds if not an error
+                if (!isError) {
+                    closeModal();
+                }
+            }, 3000);
+        }
+
+        function closeModal() {
+            document.getElementById('messageModal').style.display = 'none';
+        }
+
+        // --- Student Result View Logic ---
+        document.getElementById('viewResultsButton').addEventListener('click', async () => {
+            const studentId = document.getElementById('studentIdInput').value.trim();
+            const studentResultsError = document.getElementById('studentResultsError');
+            const studentResultDisplay = document.getElementById('studentResultDisplay');
+
+            studentResultsError.classList.add('hidden');
+            studentResultDisplay.classList.add('hidden');
+
+            if (!studentId) {
+                studentResultsError.textContent = "Please enter a Student ID.";
+                studentResultsError.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                // Show loading state
+                document.getElementById('viewResultsButton').textContent = 'Searching...';
+                document.getElementById('viewResultsButton').disabled = true;
+
+                const response = await fetch(`${BACKEND_URL}/student/results/${studentId.toUpperCase()}`);
+                const data = await response.json();
+
+                // Log the data for debugging purposes
+                console.log("Data received for student results:", data);
+
+                if (response.ok) {
+                    const resultStudentName = document.getElementById('resultStudentName');
+                    const resultStudentId = document.getElementById('resultStudentId');
+                    const resultAcademicYear = document.getElementById('resultAcademicYear');
+                    const resultSgpa = document.getElementById('resultSgpa');
+                    const resultCgpa = document.getElementById('resultCgpa');
+                    const resultSubjects = document.getElementById('resultSubjects');
+
+                    // Safely set textContent only if elements exist
+                    if (resultStudentName) resultStudentName.textContent = data.name || 'N/A';
+                    if (resultStudentId) resultStudentId.textContent = data.studentId || 'N/A';
+                    if (resultAcademicYear) resultAcademicYear.textContent = data.academicYear || 'N/A';
+                    if (resultSgpa) resultSgpa.textContent = data.sgpa || 'N/A';
+                    if (resultCgpa) resultCgpa.textContent = data.cgpa || 'N/A';
+
+                    if (resultSubjects) {
+                        resultSubjects.innerHTML = ''; // Clear previous subjects
+                        if (data.subjects && Array.isArray(data.subjects)) {
+                            data.subjects.forEach(subject => {
+                                const li = document.createElement('li');
+                                li.className = 'dark:text-gray-200';
+                                li.textContent = `${subject.name || 'Unknown'}: ${subject.marks !== undefined ? subject.marks : 'N/A'}`;
+                                resultSubjects.appendChild(li);
+                            });
+                        } else {
+                            const li = document.createElement('li');
+                            li.className = 'dark:text-gray-200';
+                            li.textContent = 'No subject details available.';
+                            resultSubjects.appendChild(li);
+                        }
+                    }
+                    studentResultDisplay.classList.remove('hidden');
+                } else {
+                    studentResultsError.textContent = data.error || "Failed to fetch results.";
+                    studentResultsError.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error fetching student results:', error);
+                studentResultsError.textContent = "An error occurred while fetching results. Please ensure the Python backend server is running.";
+                studentResultsError.classList.remove('hidden');
+            } finally {
+                // Reset loading state
+                document.getElementById('viewResultsButton').textContent = 'View Results';
+                document.getElementById('viewResultsButton').disabled = false;
+            }
+        });
+
+        // --- Admin Login/Logout Logic ---
+        let isAdminLoggedIn = false; // Simple client-side state
+
+        function updateAdminUI(loggedIn) {
+            const adminLoginSection = document.getElementById('adminLoginSection');
+            const adminPanelSection = document.getElementById('adminPanelSection');
+            if (loggedIn) {
+                adminLoginSection.classList.add('hidden');
+                adminPanelSection.classList.remove('hidden');
+            } else {
+                adminLoginSection.classList.remove('hidden');
+                adminPanelSection.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('adminLoginButton').addEventListener('click', async () => {
+            const email = document.getElementById('adminLoginEmail').value;
+            const password = document.getElementById('adminLoginPassword').value;
+            const adminLoginError = document.getElementById('adminLoginError');
+
+            adminLoginError.classList.add('hidden');
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/admin/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await response.json();
+
+                if (response.ok) {
+                    isAdminLoggedIn = true;
+                    updateAdminUI(true);
+                    showModal(data.message, false); // Show success message, not an error
+                } else {
+                    adminLoginError.textContent = data.error || "Login failed.";
+                    adminLoginError.classList.remove('hidden');
+                    showModal(data.error || "Login failed.", true); // Show error in modal
+                }
+            } catch (error) {
+                console.error('Error during admin login:', error);
+                adminLoginError.textContent = "An error occurred during login. Please ensure the Python backend server is running on http://localhost:5000.";
+                adminLoginError.classList.remove('hidden');
+                showModal("Network error during login. Is the backend server running?", true);
+            }
+        });
+
+        document.getElementById('adminLogoutButton').addEventListener('click', () => {
+            isAdminLoggedIn = false;
+            updateAdminUI(false);
+            showModal('Logged out from Admin Portal.');
+            // Clear inputs, but don't pre-fill sensitive info
+            document.getElementById('adminLoginEmail').value = '';
+            document.getElementById('adminLoginPassword').value = '';
+            document.getElementById('resultsFile').value = ''; // Clear file input on logout
+            document.getElementById('adminUploadStatus').classList.add('hidden'); // Hide status
+        });
+
+        // --- Admin Results Upload Logic (for file upload) ---
+        document.getElementById('uploadResultsButton').addEventListener('click', async () => {
+            const resultsFile = document.getElementById('resultsFile').files[0];
+            const adminUploadStatus = document.getElementById('adminUploadStatus');
+
+            adminUploadStatus.classList.add('hidden');
+            adminUploadStatus.classList.remove('text-red-600', 'dark:text-red-400', 'text-green-600', 'dark:text-green-400'); // Clear previous styling
+
+            if (!isAdminLoggedIn) {
+                adminUploadStatus.textContent = "Error: Not logged in as admin.";
+                adminUploadStatus.classList.add('text-red-600', 'dark:text-red-400');
+                adminUploadStatus.classList.remove('hidden');
+                showModal("You must be logged in as an admin to upload results.", true);
+                return;
+            }
+
+            if (!resultsFile) {
+                adminUploadStatus.textContent = "Error: Please select an Excel or CSV file to upload.";
+                adminUploadStatus.classList.add('text-red-600', 'dark:text-red-400');
+                adminUploadStatus.classList.remove('hidden');
+                showModal("Please select an Excel or CSV file.", true);
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', resultsFile);
+
+            try {
+                // Show loading state
+                document.getElementById('uploadResultsButton').textContent = 'Uploading...';
+                document.getElementById('uploadResultsButton').disabled = true;
+
+                const response = await fetch(`${BACKEND_URL}/admin/upload_results`, {
+                    method: 'POST',
+                    body: formData // No Content-Type header needed; FormData sets it automatically
+                });
+                const data = await response.json(); // Always try to parse JSON, even on error
+
+                if (response.ok) {
+                    adminUploadStatus.textContent = data.message;
+                    adminUploadStatus.classList.add('text-green-600', 'dark:text-green-400');
+                    document.getElementById('resultsFile').value = ''; // Clear file input on successful upload
+                    showModal(data.message, false);
+                } else {
+                    // Display the specific error message from the backend
+                    const errorMessage = data.error || "Failed to upload results due to an unknown server error.";
+                    adminUploadStatus.textContent = errorMessage;
+                    adminUploadStatus.classList.add('text-red-600', 'dark:text-red-400');
+                    showModal(errorMessage, true);
+                }
+            } catch (error) {
+                console.error('Error uploading results:', error);
+                let errorMessage = "An unexpected error occurred while uploading results.";
+                if (error instanceof SyntaxError) {
+                    errorMessage = "Error: The server's response was not valid JSON. This might indicate a server issue.";
+                } else if (error.message.includes('Failed to fetch')) {
+                     errorMessage = "Network error: Could not reach the backend server. Please ensure it is running.";
+                }
+                adminUploadStatus.textContent = errorMessage;
+                adminUploadStatus.classList.add('text-red-600', 'dark:text-red-400');
+                showModal(errorMessage, true);
+            } finally {
+                adminUploadStatus.classList.remove('hidden');
+                // Reset loading state
+                document.getElementById('uploadResultsButton').textContent = 'Upload Results to Portal';
+                document.getElementById('uploadResultsButton').disabled = false;
+            }
+        });
+
+        // Initialize UI state on page load
+        updateAdminUI(isAdminLoggedIn);
+    </script>
+</body>
+</html>
