@@ -9,10 +9,9 @@ app = Flask(__name__)
 CORS(app)
 
 DATA_FILE = 'students_results.json'
-
 ADMIN_EMAIL = 'admin@college.com'
 ADMIN_PASSWORD = 'adminpassword'
-
+ADMIN_TOKEN = "mock_admin_token"
 
 def load_results():
     if os.path.exists(DATA_FILE):
@@ -23,26 +22,29 @@ def load_results():
                 return {}
     return {}
 
-
 def save_results(results):
     with open(DATA_FILE, 'w') as f:
         json.dump(results, f, indent=4)
 
-
 if not os.path.exists(DATA_FILE):
     save_results({})
-
 
 @app.route('/admin/login', methods=['POST'])
 def admin_login():
     data = request.json
     if data.get('email') == ADMIN_EMAIL and data.get('password') == ADMIN_PASSWORD:
-        return jsonify({'message': 'Admin login successful!', 'token': 'mock_admin_token'}), 200
+        return jsonify({'message': 'Admin login successful!', 'token': ADMIN_TOKEN}), 200
     return jsonify({'error': 'Invalid credentials'}), 401
 
+def check_admin_auth(req):
+    token = req.headers.get("Authorization")
+    return token == f"Bearer {ADMIN_TOKEN}"
 
 @app.route('/admin/upload_results', methods=['POST'])
 def upload_results():
+    if not check_admin_auth(request):
+        return jsonify({'error': 'Unauthorized'}), 401
+
     if 'files' not in request.files:
         return jsonify({'error': 'No files part in the request'}), 400
 
@@ -65,9 +67,7 @@ def upload_results():
                 messages.append(f"Skipped {file.filename} (unsupported format).")
                 continue
 
-            # Determine type (regular or supply) from filename
             result_type = "supply" if "supply" in file.filename.lower() else "regular"
-
             temp_results = df.to_dict(orient='records')
             new_results_data = []
 
@@ -82,7 +82,6 @@ def upload_results():
                     "academicYear": row.get('academicYear', '')
                 })
 
-                # Build result block
                 result_block = {
                     "sgpa": row.get('sgpa', 0.0),
                     "cgpa": row.get('cgpa', 0.0),
@@ -103,7 +102,6 @@ def upload_results():
                     except json.JSONDecodeError:
                         pass
 
-                # Assign to "regular" or "supply"
                 student_entry[result_type] = result_block
                 all_results[student_id] = student_entry
                 new_results_data.append(student_entry)
@@ -121,7 +119,6 @@ def upload_results():
         'details': messages
     }), 200
 
-
 @app.route('/student/results/<string:student_id>', methods=['GET'])
 def get_student_results(student_id):
     all_results = load_results()
@@ -129,15 +126,15 @@ def get_student_results(student_id):
     if result:
         return jsonify(result), 200
     return jsonify({'error': 'No results found for this Student ID.'}), 404
+
 @app.route('/admin/clear_results', methods=['POST'])
 def clear_results():
-    """
-    Clears all stored student results (reset).
-    """
-    save_results({})  # overwrite with empty dict
+    if not check_admin_auth(request):
+        return jsonify({'error': 'Unauthorized'}), 401
+    save_results({})
     return jsonify({'message': 'All results have been deleted. You can now upload new files.'}), 200
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
 
