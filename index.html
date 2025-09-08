@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>College Results Portal</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -13,16 +13,14 @@
   <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md mb-8">
     <h2 class="text-2xl font-semibold mb-4">Student Result View 🎓</h2>
     <div class="flex gap-2 mb-4">
-      <input id="studentIdInput" type="text" placeholder="Enter Student ID (e.g., S101)" class="flex-1 p-2 border rounded">
+      <input id="studentIdInput" type="text" placeholder="Enter Student ID (e.g., S101)" class="flex-1 p-2 border rounded"/>
       <button id="viewResultsButton" class="px-4 py-2 bg-indigo-600 text-white rounded">View Results</button>
     </div>
     <p id="studentResultsError" class="text-red-600 hidden"></p>
-
     <div id="studentResultDisplay" class="hidden">
       <h3 class="text-xl font-bold mb-2">Results for <span id="resultStudentName"></span> (<span id="resultStudentId"></span>)</h3>
       <p class="mb-4"><strong>Academic Year:</strong> <span id="resultAcademicYear"></span></p>
 
-      <!-- Regular Results -->
       <div id="regularResults" class="mb-6 hidden">
         <h4 class="text-lg font-semibold text-blue-700 mb-2">📘 Regular Results</h4>
         <ul id="regularSubjects" class="list-disc ml-5"></ul>
@@ -30,7 +28,6 @@
         <p><strong>CGPA:</strong> <span id="regularCgpa"></span></p>
       </div>
 
-      <!-- Supply Results -->
       <div id="supplyResults" class="hidden">
         <h4 class="text-lg font-semibold text-red-700 mb-2">📕 Supply Results</h4>
         <ul id="supplySubjects" class="list-disc ml-5"></ul>
@@ -43,25 +40,20 @@
   <!-- Admin Section -->
   <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
     <h2 class="text-2xl font-semibold mb-4">Admin Portal 🔑</h2>
-
     <div id="adminLoginSection">
-      <input id="adminLoginEmail" type="email" placeholder="Admin Email" class="w-full p-2 border rounded mb-2">
-      <input id="adminLoginPassword" type="password" placeholder="Admin Password" class="w-full p-2 border rounded mb-2">
+      <input id="adminLoginEmail" type="email" placeholder="Admin Email" class="w-full p-2 border rounded mb-2"/>
+      <input id="adminLoginPassword" type="password" placeholder="Admin Password" class="w-full p-2 border rounded mb-2"/>
       <button id="adminLoginButton" class="w-full px-4 py-2 bg-purple-600 text-white rounded">Login</button>
       <p id="adminLoginError" class="text-red-600 hidden mt-2"></p>
     </div>
-
     <div id="adminPanelSection" class="hidden">
       <div class="flex justify-between items-center mb-4">
         <p class="text-green-600">Logged in as Admin</p>
         <button id="adminLogoutButton" class="px-3 py-1 bg-red-500 text-white rounded">Logout</button>
       </div>
-      <input id="resultsFile" type="file" multiple accept=".csv,.xlsx" class="w-full p-2 border rounded mb-2">
+      <input id="resultsFile" type="file" multiple accept=".csv,.xlsx" class="w-full p-2 border rounded mb-2"/>
       <button id="uploadResultsButton" class="w-full px-4 py-2 bg-purple-600 text-white rounded">Upload Results</button>
-      <button id="clearResultsButton" class="w-full px-4 py-2 bg-red-600 text-white rounded mt-2">
-  Delete All Results
-</button>
-
+      <button id="clearResultsButton" class="w-full px-4 py-2 bg-red-600 text-white rounded mt-2">Delete All Results</button>
       <pre id="adminUploadStatus" class="hidden mt-4 whitespace-pre-wrap"></pre>
     </div>
   </div>
@@ -69,18 +61,24 @@
   <script>
     const BACKEND_URL = "http://localhost:5000";
     let isAdminLoggedIn = false;
+    let adminToken = localStorage.getItem("adminToken");
 
     function updateAdminUI(loggedIn) {
       document.getElementById("adminLoginSection").classList.toggle("hidden", loggedIn);
       document.getElementById("adminPanelSection").classList.toggle("hidden", !loggedIn);
     }
 
-    // Student Results
+    // Restore login state on page load
+    if (adminToken) {
+      isAdminLoggedIn = true;
+      updateAdminUI(true);
+    }
+
+    // Student results view
     document.getElementById("viewResultsButton").addEventListener("click", async () => {
       const studentId = document.getElementById("studentIdInput").value.trim();
       const errorBox = document.getElementById("studentResultsError");
       const resultBox = document.getElementById("studentResultDisplay");
-
       errorBox.classList.add("hidden");
       resultBox.classList.add("hidden");
 
@@ -99,7 +97,6 @@
           document.getElementById("resultStudentId").textContent = data.studentId || "N/A";
           document.getElementById("resultAcademicYear").textContent = data.academicYear || "N/A";
 
-          // Regular
           if (data.regular) {
             document.getElementById("regularResults").classList.remove("hidden");
             document.getElementById("regularSgpa").textContent = data.regular.sgpa || "N/A";
@@ -115,7 +112,6 @@
             document.getElementById("regularResults").classList.add("hidden");
           }
 
-          // Supply
           if (data.supply) {
             document.getElementById("supplyResults").classList.remove("hidden");
             document.getElementById("supplySgpa").textContent = data.supply.sgpa || "N/A";
@@ -130,7 +126,6 @@
           } else {
             document.getElementById("supplyResults").classList.add("hidden");
           }
-
           resultBox.classList.remove("hidden");
         } else {
           errorBox.textContent = data.error || "Failed to fetch results.";
@@ -142,7 +137,7 @@
       }
     });
 
-    // Admin Login
+    // Admin login
     document.getElementById("adminLoginButton").addEventListener("click", async () => {
       const email = document.getElementById("adminLoginEmail").value;
       const password = document.getElementById("adminLoginPassword").value;
@@ -158,7 +153,13 @@
 
         if (response.ok) {
           isAdminLoggedIn = true;
+          adminToken = data.token;
+          localStorage.setItem("adminToken", adminToken); // persist login
           updateAdminUI(true);
+
+          document.getElementById("adminLoginEmail").value = "";
+          document.getElementById("adminLoginPassword").value = "";
+          errorBox.classList.add("hidden");
         } else {
           errorBox.textContent = data.error || "Login failed.";
           errorBox.classList.remove("hidden");
@@ -169,18 +170,26 @@
       }
     });
 
+    // Admin logout
     document.getElementById("adminLogoutButton").addEventListener("click", () => {
       isAdminLoggedIn = false;
+      adminToken = null;
+      localStorage.removeItem("adminToken"); // clear token
       updateAdminUI(false);
+
+      document.getElementById("adminLoginEmail").value = "";
+      document.getElementById("adminLoginPassword").value = "";
+      document.getElementById("resultsFile").value = "";
+      document.getElementById("adminUploadStatus").classList.add("hidden");
     });
 
-    // Admin Upload
+    // Upload results
     document.getElementById("uploadResultsButton").addEventListener("click", async () => {
       const files = document.getElementById("resultsFile").files;
       const statusBox = document.getElementById("adminUploadStatus");
       statusBox.classList.add("hidden");
 
-      if (!isAdminLoggedIn) {
+      if (!isAdminLoggedIn || !adminToken) {
         statusBox.textContent = "You must be logged in as admin.";
         statusBox.classList.remove("hidden");
         return;
@@ -195,7 +204,11 @@
       for (let f of files) formData.append("files", f);
 
       try {
-        const response = await fetch(`${BACKEND_URL}/admin/upload_results`, { method: "POST", body: formData });
+        const response = await fetch(`${BACKEND_URL}/admin/upload_results`, {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${adminToken}` },
+          body: formData
+        });
         const data = await response.json();
         if (response.ok) {
           let message = data.message;
@@ -213,33 +226,39 @@
         statusBox.classList.remove("hidden");
       }
     });
+
+    // Clear results
     document.getElementById("clearResultsButton").addEventListener("click", async () => {
-  if (!isAdminLoggedIn) {
-    alert("You must be logged in as admin to clear results.");
-    return;
-  }
+      if (!isAdminLoggedIn || !adminToken) {
+        alert("You must be logged in as admin to clear results.");
+        return;
+      }
 
-  if (!confirm("⚠️ Are you sure you want to delete all student results? This cannot be undone.")) {
-    return;
-  }
+      if (!confirm("⚠️ Are you sure you want to delete all student results? This cannot be undone.")) {
+        return;
+      }
 
-  try {
-    const response = await fetch(`${BACKEND_URL}/admin/clear_results`, { method: "POST" });
-    const data = await response.json();
-    if (response.ok) {
-      alert(data.message);
-      document.getElementById("adminUploadStatus").textContent = data.message;
-      document.getElementById("adminUploadStatus").classList.remove("hidden");
-    } else {
-      alert(data.error || "Failed to clear results.");
-    }
-  } catch {
-    alert("Error clearing results.");
-  }
-});
+      try {
+        const response = await fetch(`${BACKEND_URL}/admin/clear_results`, {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${adminToken}` }
+        });
+        const data = await response.json();
+        if (response.ok) {
+          alert(data.message);
+          document.getElementById("adminUploadStatus").textContent = data.message;
+          document.getElementById("adminUploadStatus").classList.remove("hidden");
+        } else {
+          alert(data.error || "Failed to clear results.");
+        }
+      } catch {
+        alert("Error clearing results.");
+      }
+    });
 
     updateAdminUI(isAdminLoggedIn);
   </script>
 </body>
 </html>
+
 
