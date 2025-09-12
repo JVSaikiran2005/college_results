@@ -5,56 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>College Results Portal</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 24px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    .modal-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 p-6">
-  <h1 class="text-4xl font-bold text-center mb-6">College Results Portal</h1>
+<body class="bg-gray-100 p-6 font-sans">
 
-  <!-- Student Section -->
-  <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md mb-8">
-    <h2 class="text-2xl font-semibold mb-4">Student Result View 🎓</h2>
-    <div class="flex gap-2 mb-4">
-      <input id="studentIdInput" type="text" placeholder="Enter Student ID (e.g., S101)" class="flex-1 p-2 border rounded"/>
-      <button id="viewResultsButton" class="px-4 py-2 bg-indigo-600 text-white rounded">View Results</button>
-    </div>
-    <p id="studentResultsError" class="text-red-600 hidden"></p>
-    <div id="studentResultDisplay" class="hidden">
-      <h3 class="text-xl font-bold mb-2">Results for <span id="resultStudentName"></span> (<span id="resultStudentId"></span>)</h3>
-      <p class="mb-4"><strong>Academic Year:</strong> <span id="resultAcademicYear"></span></p>
-
-      <div id="regularResults" class="mb-6 hidden">
-        <h4 class="text-lg font-semibold text-blue-700 mb-2">📘 Regular Results</h4>
-        <ul id="regularSubjects" class="list-disc ml-5"></ul>
-        <p><strong>SGPA:</strong> <span id="regularSgpa"></span></p>
-        <p><strong>CGPA:</strong> <span id="regularCgpa"></span></p>
-      </div>
-
-      <div id="supplyResults" class="hidden">
-        <h4 class="text-lg font-semibold text-red-700 mb-2">📕 Supply Results</h4>
-        <ul id="supplySubjects" class="list-disc ml-5"></ul>
-        <p><strong>SGPA:</strong> <span id="supplySgpa"></span></p>
-        <p><strong>CGPA:</strong> <span id="supplyCgpa"></span></p>
+  <!-- Modal for Alerts and Confirmation -->
+  <div id="customModal" class="modal hidden">
+    <div class="modal-content rounded-lg">
+      <p id="modalMessage" class="text-lg font-semibold text-gray-700"></p>
+      <div class="modal-buttons">
+        <button id="modalConfirmBtn" class="px-4 py-2 bg-red-600 text-white rounded-lg hidden">Confirm</button>
+        <button id="modalCloseBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg">OK</button>
       </div>
     </div>
   </div>
+  
+  <div class="flex items-center justify-center mb-6">
+  <img src="gvplogo.png" alt="College Logo" class="h-20 mr-4"/>
+  <div class="text-center">
+    <h1 class="text-2xl md:text-3xl font-bold">GAYATRI VIDYA PARISHAD</h1>
+    <h2 class="text-lg md:text-xl font-semibold">COLLEGE FOR DEGREE AND PG COURSES (AUTONOMOUS)</h2>
+    <p class="text-sm text-gray-700 italic">(Affiliated to Andhra University | Accredited by NAAC with 'A' Grade)</p>
+    <h2 class="text-lg md:text-xl font-semibold">COLLEGE RESULTS PORTAL</h2>
+  </div>
+</div>
+  <!-- Student Section -->
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md mb-8">
+    <h2 class="text-2xl font-semibold mb-4 text-gray-700">Student Result View</h2>
+    <div class="flex flex-col sm:flex-row gap-2 mb-4">
+      <input id="studentIdInput" type="text" placeholder="Enter Student ID (e.g., S101)" class="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+      <button id="viewResultsButton" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">View Results</button>
+    </div>
+    <p id="studentResultsError" class="text-red-600 hidden"></p>
+    <div id="studentResultDisplay" class="hidden">
+      <h3 class="text-xl font-bold mb-2 text-gray-800">Results for <span id="resultStudentName"></span> (<span id="resultStudentId"></span>)</h3>
+      <p><strong>Branch:</strong> <span id="resultBranch"></span></p>
+      <p><strong>Semester:</strong> <span id="resultSemester"></span></p>
 
+
+      <div id="regularResults" class="mb-6 hidden">
+        <h4 class="text-lg font-semibold text-blue-700 mb-2">Regular Results</h4>
+        <ul id="regularSubjects" class="list-disc ml-5 text-gray-600"></ul>
+        <div class="flex flex-col sm:flex-row sm:gap-4 mt-2 text-gray-700">
+            <p><strong>SGPA:</strong> <span id="regularSgpa"></span></p>
+            <p><strong>CGPA:</strong> <span id="regularCgpa"></span></p>
+        </div>
+        <button onclick="downloadMarksheet('regular')" class="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+  Download Regular Marksheet
+</button>
+      </div>
+
+      <div id="supplyResults" class="hidden">
+        <h4 class="text-lg font-semibold text-red-700 mb-2">Supply Results</h4>
+        <ul id="supplySubjects" class="list-disc ml-5 text-gray-600"></ul>
+        <div class="flex flex-col sm:flex-row sm:gap-4 mt-2 text-gray-700">
+            <p><strong>SGPA:</strong> <span id="supplySgpa"></span></p>
+            <p><strong>CGPA:</strong> <span id="supplyCgpa"></span></p>
+        </div>
+        <button onclick="downloadMarksheet('supply')" class="mt-4 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors">
+  Download Supply Marksheet
+</button>
+      </div>
+    </div>
+  </div>
+   
   <!-- Admin Section -->
   <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
-    <h2 class="text-2xl font-semibold mb-4">Admin Portal 🔑</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-gray-700">Admin Portal</h2>
     <div id="adminLoginSection">
-      <input id="adminLoginEmail" type="email" placeholder="Admin Email" class="w-full p-2 border rounded mb-2"/>
-      <input id="adminLoginPassword" type="password" placeholder="Admin Password" class="w-full p-2 border rounded mb-2"/>
-      <button id="adminLoginButton" class="w-full px-4 py-2 bg-purple-600 text-white rounded">Login</button>
+      <input id="adminLoginEmail" type="email" placeholder="Admin Email" class="w-full p-2 border rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-purple-500"/>
+      <input id="adminLoginPassword" type="password" placeholder="Admin Password" class="w-full p-2 border rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-purple-500"/>
+      <button id="adminLoginButton" class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">Login</button>
       <p id="adminLoginError" class="text-red-600 hidden mt-2"></p>
     </div>
     <div id="adminPanelSection" class="hidden">
       <div class="flex justify-between items-center mb-4">
-        <p class="text-green-600">Logged in as Admin</p>
-        <button id="adminLogoutButton" class="px-3 py-1 bg-red-500 text-white rounded">Logout</button>
+        <p class="text-green-600 font-medium">Logged in as Admin</p>
+        <button id="adminLogoutButton" class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">Logout</button>
       </div>
-      <input id="resultsFile" type="file" multiple accept=".csv,.xlsx" class="w-full p-2 border rounded mb-2"/>
-      <button id="uploadResultsButton" class="w-full px-4 py-2 bg-purple-600 text-white rounded">Upload Results</button>
-      <button id="clearResultsButton" class="w-full px-4 py-2 bg-red-600 text-white rounded mt-2">Delete All Results</button>
-      <pre id="adminUploadStatus" class="hidden mt-4 whitespace-pre-wrap"></pre>
+      <label for="resultsFile" class="block text-gray-700 mb-1">Upload Results (CSV/XLSX):</label>
+      <input id="resultsFile" type="file" multiple accept=".csv,.xlsx" class="w-full p-2 border rounded-lg mb-2"/>
+      <button id="uploadResultsButton" class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">Upload Results</button>
+      <button id="clearResultsButton" class="w-full px-4 py-2 bg-red-600 text-white rounded-lg mt-2 hover:bg-red-700 transition-colors">Delete All Results</button>
+      <pre id="adminUploadStatus" class="hidden mt-4 whitespace-pre-wrap p-4 bg-gray-200 rounded-lg text-sm text-gray-800"></pre>
     </div>
   </div>
 
@@ -67,6 +128,39 @@
       document.getElementById("adminLoginSection").classList.toggle("hidden", loggedIn);
       document.getElementById("adminPanelSection").classList.toggle("hidden", !loggedIn);
     }
+
+    // Custom Modal for alerts and confirms
+    const modal = document.getElementById("customModal");
+    const modalMessage = document.getElementById("modalMessage");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const modalConfirmBtn = document.getElementById("modalConfirmBtn");
+
+    function showAlert(message) {
+      modalMessage.textContent = message;
+      modalConfirmBtn.classList.add("hidden");
+      modalCloseBtn.classList.remove("hidden");
+      modal.classList.remove("hidden");
+    }
+
+    function showConfirm(message, callback) {
+      modalMessage.textContent = message;
+      modalCloseBtn.classList.add("hidden");
+      modalConfirmBtn.classList.remove("hidden");
+      modal.classList.remove("hidden");
+      modalConfirmBtn.onclick = () => {
+        modal.classList.add("hidden");
+        callback(true);
+      };
+      // For any other click (like background), close the modal
+      modal.onclick = (e) => {
+        if (e.target.id === "customModal") {
+          modal.classList.add("hidden");
+          callback(false);
+        }
+      };
+    }
+    
+    modalCloseBtn.onclick = () => modal.classList.add("hidden");
 
     // Restore login state on page load
     if (adminToken) {
@@ -89,53 +183,56 @@
       }
 
       try {
-        const response = await fetch(`${BACKEND_URL}/student/results/${studentId.toUpperCase()}`);
-        const data = await response.json();
+  const response = await fetch(`${BACKEND_URL}/student/results/${studentId.toUpperCase()}`);
+  const data = await response.json();
+  console.log("Fetched data:", data);  // ✅ debug
 
-        if (response.ok) {
-          document.getElementById("resultStudentName").textContent = data.name || "N/A";
-          document.getElementById("resultStudentId").textContent = data.studentId || "N/A";
-          document.getElementById("resultAcademicYear").textContent = data.academicYear || "N/A";
+  if (response.ok) {
+    document.getElementById("resultStudentName").textContent = data.name || "N/A";
+    document.getElementById("resultStudentId").textContent = data.studentId || "N/A";
+    document.getElementById("resultBranch").textContent = data.branch || "N/A";
+    document.getElementById("resultSemester").textContent = data.semester || "N/A";
 
-          if (data.regular) {
-            document.getElementById("regularResults").classList.remove("hidden");
-            document.getElementById("regularSgpa").textContent = data.regular.sgpa || "N/A";
-            document.getElementById("regularCgpa").textContent = data.regular.cgpa || "N/A";
-            const ul = document.getElementById("regularSubjects");
-            ul.innerHTML = "";
-            (data.regular.subjects || []).forEach(s => {
-              const li = document.createElement("li");
-              li.textContent = `${s.name}: ${s.marks}`;
-              ul.appendChild(li);
-            });
-          } else {
-            document.getElementById("regularResults").classList.add("hidden");
-          }
+    if (data.regular) {
+      document.getElementById("regularResults").classList.remove("hidden");
+      document.getElementById("regularSgpa").textContent = data.regular.sgpa || "N/A";
+      document.getElementById("regularCgpa").textContent = data.regular.cgpa || "N/A";
+      const ul = document.getElementById("regularSubjects");
+      ul.innerHTML = "";
+      (data.regular.subjects || []).forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = `${s.name} - Credit: ${s.credit}, Grade: ${s.grade}, Grade Points: ${s.gradePoints}`;
+        ul.appendChild(li);
+      });
+    } else {
+      document.getElementById("regularResults").classList.add("hidden");
+    }
 
-          if (data.supply) {
-            document.getElementById("supplyResults").classList.remove("hidden");
-            document.getElementById("supplySgpa").textContent = data.supply.sgpa || "N/A";
-            document.getElementById("supplyCgpa").textContent = data.supply.cgpa || "N/A";
-            const ul = document.getElementById("supplySubjects");
-            ul.innerHTML = "";
-            (data.supply.subjects || []).forEach(s => {
-              const li = document.createElement("li");
-              li.textContent = `${s.name}: ${s.marks}`;
-              ul.appendChild(li);
-            });
-          } else {
-            document.getElementById("supplyResults").classList.add("hidden");
-          }
-          resultBox.classList.remove("hidden");
-        } else {
-          errorBox.textContent = data.error || "Failed to fetch results.";
-          errorBox.classList.remove("hidden");
-        }
-      } catch {
-        errorBox.textContent = "Error fetching results.";
-        errorBox.classList.remove("hidden");
-      }
-    });
+    if (data.supply) {
+      document.getElementById("supplyResults").classList.remove("hidden");
+      document.getElementById("supplySgpa").textContent = data.supply.sgpa || "N/A";
+      document.getElementById("supplyCgpa").textContent = data.supply.cgpa || "N/A";
+      const ul = document.getElementById("supplySubjects");
+      ul.innerHTML = "";
+      (data.supply.subjects || []).forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = `${s.name} - Credit: ${s.credit}, Grade: ${s.grade}, Grade Points: ${s.gradePoints}`;
+        ul.appendChild(li);
+      });
+    } else {
+      document.getElementById("supplyResults").classList.add("hidden");
+    }
+    resultBox.classList.remove("hidden");
+  } else {
+    errorBox.textContent = data.error || "Failed to fetch results.";
+    errorBox.classList.remove("hidden");
+  }
+} catch (err) {
+  console.error("Fetch error:", err); // ✅ show exact error
+  errorBox.textContent = "Error fetching results.";
+  errorBox.classList.remove("hidden");
+}
+});
 
     // Admin login
     document.getElementById("adminLoginButton").addEventListener("click", async () => {
@@ -190,13 +287,11 @@
       statusBox.classList.add("hidden");
 
       if (!isAdminLoggedIn || !adminToken) {
-        statusBox.textContent = "You must be logged in as admin.";
-        statusBox.classList.remove("hidden");
+        showAlert("You must be logged in as admin.");
         return;
       }
       if (!files.length) {
-        statusBox.textContent = "Please select files.";
-        statusBox.classList.remove("hidden");
+        showAlert("Please select files.");
         return;
       }
 
@@ -218,47 +313,66 @@
           statusBox.textContent = message;
           statusBox.classList.remove("hidden");
         } else {
-          statusBox.textContent = data.error || "Upload failed.";
-          statusBox.classList.remove("hidden");
+          showAlert(data.error || "Upload failed.");
         }
       } catch {
-        statusBox.textContent = "Error uploading results.";
-        statusBox.classList.remove("hidden");
+        showAlert("Error uploading results.");
       }
     });
 
     // Clear results
     document.getElementById("clearResultsButton").addEventListener("click", async () => {
       if (!isAdminLoggedIn || !adminToken) {
-        alert("You must be logged in as admin to clear results.");
+        showAlert("You must be logged in as admin to clear results.");
         return;
       }
 
-      if (!confirm("⚠️ Are you sure you want to delete all student results? This cannot be undone.")) {
-        return;
-      }
-
-      try {
-        const response = await fetch(`${BACKEND_URL}/admin/clear_results`, {
-          method: "POST",
-          headers: { "Authorization": `Bearer ${adminToken}` }
-        });
-        const data = await response.json();
-        if (response.ok) {
-          alert(data.message);
-          document.getElementById("adminUploadStatus").textContent = data.message;
-          document.getElementById("adminUploadStatus").classList.remove("hidden");
-        } else {
-          alert(data.error || "Failed to clear results.");
+      showConfirm("Are you sure you want to delete all student results? This cannot be undone.", async (confirmed) => {
+        if (!confirmed) {
+          return;
         }
-      } catch {
-        alert("Error clearing results.");
-      }
+
+        try {
+          const response = await fetch(`${BACKEND_URL}/admin/clear_results`, {
+            method: "POST",
+            headers: { "Authorization": `Bearer ${adminToken}` }
+          });
+          const data = await response.json();
+          if (response.ok) {
+            showAlert(data.message);
+            document.getElementById("adminUploadStatus").textContent = data.message;
+            document.getElementById("adminUploadStatus").classList.remove("hidden");
+          } else {
+            showAlert(data.error || "Failed to clear results.");
+          }
+        } catch {
+          showAlert("Error clearing results.");
+        }
+      });
     });
 
-    updateAdminUI(isAdminLoggedIn);
+    function updateAdminUI(loggedIn) {
+  document.getElementById("adminLoginSection").classList.toggle("hidden", loggedIn);
+  document.getElementById("adminPanelSection").classList.toggle("hidden", !loggedIn);
+
+  if (loggedIn) {
+    // clear inputs to avoid exposing login details
+    document.getElementById("adminLoginEmail").value = "";
+    document.getElementById("adminLoginPassword").value = "";
+  }
+}
+
+    function downloadMarksheet(type) {
+        const studentId = document.getElementById("resultStudentId").textContent;
+        if (!studentId || studentId === "N/A") {
+            showAlert("Please fetch a student result first.");
+            return;
+        }
+        window.open(`${BACKEND_URL}/student/download/${studentId}/${type}`, "_blank");
+    }
   </script>
 </body>
 </html>
+
 
 
