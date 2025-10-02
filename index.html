@@ -70,11 +70,24 @@
       <p><strong>Branch:</strong> <span id="resultBranch"></span></p>
       <p><strong>Semester:</strong> <span id="resultSemester"></span></p>
 
-
+      <!-- Updated to display results in a table -->
       <div id="regularResults" class="mb-6 hidden">
         <h4 class="text-lg font-semibold text-blue-700 mb-2">Regular Results</h4>
-        <ul id="regularSubjects" class="list-disc ml-5 text-gray-600"></ul>
-        <div class="flex flex-col sm:flex-row sm:gap-4 mt-2 text-gray-700">
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+            <thead>
+              <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+                <th class="py-3 px-6 text-left">Subject Name</th>
+                <th class="py-3 px-6 text-left">Credits</th>
+                <th class="py-3 px-6 text-left">Grade</th>
+                <th class="py-3 px-6 text-left">Grade Points</th>
+              </tr>
+            </thead>
+            <tbody id="regularSubjectsTable" class="text-gray-600 text-sm font-light">
+            </tbody>
+          </table>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:gap-4 mt-4 text-gray-700 font-semibold">
             <p><strong>SGPA:</strong> <span id="regularSgpa"></span></p>
             <p><strong>CGPA:</strong> <span id="regularCgpa"></span></p>
         </div>
@@ -85,8 +98,21 @@
 
       <div id="supplyResults" class="hidden">
         <h4 class="text-lg font-semibold text-red-700 mb-2">Supply Results</h4>
-        <ul id="supplySubjects" class="list-disc ml-5 text-gray-600"></ul>
-        <div class="flex flex-col sm:flex-row sm:gap-4 mt-2 text-gray-700">
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+            <thead>
+              <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+                <th class="py-3 px-6 text-left">Subject Name</th>
+                <th class="py-3 px-6 text-left">Credits</th>
+                <th class="py-3 px-6 text-left">Grade</th>
+                <th class="py-3 px-6 text-left">Grade Points</th>
+              </tr>
+            </thead>
+            <tbody id="supplySubjectsTable" class="text-gray-600 text-sm font-light">
+            </tbody>
+          </table>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:gap-4 mt-4 text-gray-700 font-semibold">
             <p><strong>SGPA:</strong> <span id="supplySgpa"></span></p>
             <p><strong>CGPA:</strong> <span id="supplyCgpa"></span></p>
         </div>
@@ -183,56 +209,68 @@
       }
 
       try {
-  const response = await fetch(`${BACKEND_URL}/student/results/${studentId.toUpperCase()}`);
-  const data = await response.json();
-  console.log("Fetched data:", data);  // ✅ debug
+        const response = await fetch(`${BACKEND_URL}/student/results/${studentId.toUpperCase()}`);
+        const data = await response.json();
+        console.log("Fetched data:", data);
 
-  if (response.ok) {
-    document.getElementById("resultStudentName").textContent = data.name || "N/A";
-    document.getElementById("resultStudentId").textContent = data.studentId || "N/A";
-    document.getElementById("resultBranch").textContent = data.branch || "N/A";
-    document.getElementById("resultSemester").textContent = data.semester || "N/A";
+        if (response.ok) {
+          document.getElementById("resultStudentName").textContent = data.name || "N/A";
+          document.getElementById("resultStudentId").textContent = data.studentId || "N/A";
+          document.getElementById("resultBranch").textContent = data.branch || "N/A";
+          document.getElementById("resultSemester").textContent = data.semester || "N/A";
 
-    if (data.regular) {
-      document.getElementById("regularResults").classList.remove("hidden");
-      document.getElementById("regularSgpa").textContent = data.regular.sgpa || "N/A";
-      document.getElementById("regularCgpa").textContent = data.regular.cgpa || "N/A";
-      const ul = document.getElementById("regularSubjects");
-      ul.innerHTML = "";
-      (data.regular.subjects || []).forEach(s => {
-        const li = document.createElement("li");
-        li.textContent = `${s.name} - Credit: ${s.credit}, Grade: ${s.grade}, Grade Points: ${s.gradePoints}`;
-        ul.appendChild(li);
-      });
-    } else {
-      document.getElementById("regularResults").classList.add("hidden");
-    }
+          // Regular Results
+          if (data.regular) {
+            document.getElementById("regularResults").classList.remove("hidden");
+            document.getElementById("regularSgpa").textContent = data.regular.sgpa || "N/A";
+            document.getElementById("regularCgpa").textContent = data.regular.cgpa || "N/A";
+            const tableBody = document.getElementById("regularSubjectsTable");
+            tableBody.innerHTML = "";
+            (data.regular.subjects || []).forEach(s => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                <td class="py-3 px-6">${s.name}</td>
+                <td class="py-3 px-6">${s.credit}</td>
+                <td class="py-3 px-6">${s.grade}</td>
+                <td class="py-3 px-6">${s.gradePoints}</td>
+              `;
+              tableBody.appendChild(row);
+            });
+          } else {
+            document.getElementById("regularResults").classList.add("hidden");
+          }
 
-    if (data.supply) {
-      document.getElementById("supplyResults").classList.remove("hidden");
-      document.getElementById("supplySgpa").textContent = data.supply.sgpa || "N/A";
-      document.getElementById("supplyCgpa").textContent = data.supply.cgpa || "N/A";
-      const ul = document.getElementById("supplySubjects");
-      ul.innerHTML = "";
-      (data.supply.subjects || []).forEach(s => {
-        const li = document.createElement("li");
-        li.textContent = `${s.name} - Credit: ${s.credit}, Grade: ${s.grade}, Grade Points: ${s.gradePoints}`;
-        ul.appendChild(li);
-      });
-    } else {
-      document.getElementById("supplyResults").classList.add("hidden");
-    }
-    resultBox.classList.remove("hidden");
-  } else {
-    errorBox.textContent = data.error || "Failed to fetch results.";
-    errorBox.classList.remove("hidden");
-  }
-} catch (err) {
-  console.error("Fetch error:", err); // ✅ show exact error
-  errorBox.textContent = "Error fetching results.";
-  errorBox.classList.remove("hidden");
-}
-});
+          // Supply Results
+          if (data.supply) {
+            document.getElementById("supplyResults").classList.remove("hidden");
+            document.getElementById("supplySgpa").textContent = data.supply.sgpa || "N/A";
+            document.getElementById("supplyCgpa").textContent = data.supply.cgpa || "N/A";
+            const tableBody = document.getElementById("supplySubjectsTable");
+            tableBody.innerHTML = "";
+            (data.supply.subjects || []).forEach(s => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                <td class="py-3 px-6">${s.name}</td>
+                <td class="py-3 px-6">${s.credit}</td>
+                <td class="py-3 px-6">${s.grade}</td>
+                <td class="py-3 px-6">${s.gradePoints}</td>
+              `;
+              tableBody.appendChild(row);
+            });
+          } else {
+            document.getElementById("supplyResults").classList.add("hidden");
+          }
+          resultBox.classList.remove("hidden");
+        } else {
+          errorBox.textContent = data.error || "Failed to fetch results.";
+          errorBox.classList.remove("hidden");
+        }
+      } catch (err) {
+        console.error("Fetch error:", err);
+        errorBox.textContent = "Error fetching results.";
+        errorBox.classList.remove("hidden");
+      }
+    });
 
     // Admin login
     document.getElementById("adminLoginButton").addEventListener("click", async () => {
@@ -307,8 +345,8 @@
         const data = await response.json();
         if (response.ok) {
           let message = data.message;
-          if (data.details) {
-            message += "\n\nDetails:\n" + data.details.join("\n");
+          if (data.details && data.details.length > 0) {
+            message += "\n\nDetails:\n" + data.details.map(d => `- ${d}`).join("\n");
           }
           statusBox.textContent = message;
           statusBox.classList.remove("hidden");
@@ -373,6 +411,7 @@
   </script>
 </body>
 </html>
+
 
 
 
