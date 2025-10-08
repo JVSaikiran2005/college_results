@@ -33,115 +33,130 @@
       gap: 16px;
       margin-top: 16px;
     }
+    .file-list {
+        max-height: 250px;
+        overflow-y: auto;
+    }
   </style>
 </head>
 <body class="bg-gray-100 p-6 font-sans">
 
-  <!-- Modal for Alerts and Confirmation -->
+  <!-- Custom Modal for Alerts and Confirmation -->
   <div id="customModal" class="modal hidden">
     <div class="modal-content rounded-lg">
       <p id="modalMessage" class="text-lg font-semibold text-gray-700"></p>
       <div class="modal-buttons">
-        <button id="modalConfirmBtn" class="px-4 py-2 bg-red-600 text-white rounded-lg hidden">Confirm</button>
-        <button id="modalCloseBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg">OK</button>
+        <button id="modalConfirmBtn" class="px-4 py-2 bg-red-600 text-white rounded-lg hidden hover:bg-red-700 transition-colors">Confirm</button>
+        <button id="modalCloseBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">OK</button>
       </div>
     </div>
   </div>
   
   <div class="flex items-center justify-center mb-6">
-  <img src="gvplogo.png" alt="College Logo" class="h-20 mr-4"/>
-  <div class="text-center">
-    <h1 class="text-2xl md:text-3xl font-bold">GAYATRI VIDYA PARISHAD</h1>
-    <h2 class="text-lg md:text-xl font-semibold">COLLEGE FOR DEGREE AND PG COURSES (AUTONOMOUS)</h2>
-    <p class="text-sm text-gray-700 italic">(Affiliated to Andhra University | Accredited by NAAC with 'A' Grade)</p>
-    <h2 class="text-lg md:text-xl font-semibold">COLLEGE RESULTS PORTAL</h2>
+    <!-- Image placeholder for College Logo -->
+    <img src="gvplogo.png" alt="College Logo" class="h-20 mr-4 rounded-lg"/>
+    <div class="text-center">
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-800">GAYATRI VIDYA PARISHAD</h1>
+      <h2 class="text-lg md:text-xl font-semibold text-gray-700">COLLEGE FOR DEGREE AND PG COURSES (AUTONOMOUS)</h2>
+      <p class="text-sm text-gray-600 italic">(Affiliated to Andhra University | Accredited by NAAC with 'A' Grade)</p>
+      <h2 class="text-lg md:text-xl font-semibold text-indigo-600 mt-2">COLLEGE RESULTS PORTAL</h2>
+    </div>
   </div>
-</div>
+
   <!-- Student Section -->
-  <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md mb-8">
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-xl mb-8 border-t-4 border-indigo-600">
     <h2 class="text-2xl font-semibold mb-4 text-gray-700">Student Result View</h2>
     <div class="flex flex-col sm:flex-row gap-2 mb-4">
-      <input id="studentIdInput" type="text" placeholder="Enter Student ID (e.g., S101)" class="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
-      <button id="viewResultsButton" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">View Results</button>
+      <input id="studentIdInput" type="text" placeholder="Enter Student ID (e.g., S101)" class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+      <button id="viewResultsButton" class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors shadow-md">Find Results</button>
     </div>
+    
     <p id="studentResultsError" class="text-red-600 hidden"></p>
-    <div id="studentResultDisplay" class="hidden">
-      <h3 class="text-xl font-bold mb-2 text-gray-800">Results for <span id="resultStudentName"></span> (<span id="resultStudentId"></span>)</h3>
+    
+    <div id="studentResultDisplay" class="hidden mt-4 p-4 border rounded-lg bg-gray-50">
+      <h3 class="text-xl font-bold mb-2 text-gray-800">Student Details</h3>
+      <p class="mb-2"><strong>Name:</strong> <span id="resultStudentName"></span> (<span id="resultStudentId"></span>)</p>
       <p><strong>Branch:</strong> <span id="resultBranch"></span></p>
-      <p><strong>Semester:</strong> <span id="resultSemester"></span></p>
 
-      <!-- Updated to display results in a table -->
-      <div id="regularResults" class="mb-6 hidden">
-        <h4 class="text-lg font-semibold text-blue-700 mb-2">Regular Results</h4>
-        <div class="overflow-x-auto">
-          <table class="min-w-full bg-white border border-gray-200 rounded-lg">
-            <thead>
-              <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
-                <th class="py-3 px-6 text-left">Subject Name</th>
-                <th class="py-3 px-6 text-left">Credits</th>
-                <th class="py-3 px-6 text-left">Grade</th>
-                <th class="py-3 px-6 text-left">Grade Points</th>
-              </tr>
-            </thead>
-            <tbody id="regularSubjectsTable" class="text-gray-600 text-sm font-light">
-            </tbody>
-          </table>
+      <div id="resultSelectorArea" class="mt-4 p-3 bg-white rounded-lg border">
+        <label for="availableResultsSelect" class="block text-gray-700 font-medium mb-2">Select Previous Result:</label>
+        <div class="flex flex-col sm:flex-row gap-2">
+            <select id="availableResultsSelect" class="flex-1 p-3 border rounded-lg bg-white shadow-inner"></select>
+            <button id="viewSelectedResultButton" class="px-4 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors shadow-md disabled:bg-gray-400" disabled>View Details</button>
         </div>
-        <div class="flex flex-col sm:flex-row sm:gap-4 mt-4 text-gray-700 font-semibold">
-            <p><strong>SGPA:</strong> <span id="regularSgpa"></span></p>
-            <p><strong>CGPA:</strong> <span id="regularCgpa"></span></p>
-        </div>
-        <button onclick="downloadMarksheet('regular')" class="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-  Download Regular Marksheet
-</button>
       </div>
+      
+      <!-- Individual Result Details Section -->
+      <div id="resultDetailsArea" class="mt-6 hidden">
+        <h4 class="text-lg font-semibold text-blue-700 mb-2">Details for: <span id="currentResultKey" class="font-bold"></span></h4>
+        <p><strong>Semester:</strong> <span id="resultSemester"></span></p>
 
-      <div id="supplyResults" class="hidden">
-        <h4 class="text-lg font-semibold text-red-700 mb-2">Supply Results</h4>
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto mt-4">
           <table class="min-w-full bg-white border border-gray-200 rounded-lg">
             <thead>
-              <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+              <tr class="bg-indigo-50 text-indigo-800 uppercase text-sm leading-normal">
                 <th class="py-3 px-6 text-left">Subject Name</th>
-                <th class="py-3 px-6 text-left">Credits</th>
-                <th class="py-3 px-6 text-left">Grade</th>
-                <th class="py-3 px-6 text-left">Grade Points</th>
+                <th class="py-3 px-6 text-center">Credits</th>
+                <th class="py-3 px-6 text-center">Grade</th>
+                <th class="py-3 px-6 text-center">Grade Points</th>
               </tr>
             </thead>
-            <tbody id="supplySubjectsTable" class="text-gray-600 text-sm font-light">
+            <tbody id="subjectsTable" class="text-gray-600 text-sm font-light">
             </tbody>
           </table>
         </div>
-        <div class="flex flex-col sm:flex-row sm:gap-4 mt-4 text-gray-700 font-semibold">
-            <p><strong>SGPA:</strong> <span id="supplySgpa"></span></p>
-            <p><strong>CGPA:</strong> <span id="supplyCgpa"></span></p>
+        
+        <div class="flex flex-col sm:flex-row sm:gap-6 mt-4 text-gray-700 font-extrabold text-lg">
+            <p><strong>SGPA:</strong> <span id="resultSgpa" class="text-indigo-800"></span></p>
+            <p><strong>CGPA:</strong> <span id="resultCgpa" class="text-indigo-800"></span></p>
         </div>
-        <button onclick="downloadMarksheet('supply')" class="mt-4 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors">
-  Download Supply Marksheet
-</button>
+        
+        <button id="downloadMarksheetButton" onclick="downloadMarksheet()" class="mt-4 px-6 py-3 bg-yellow-600 text-white font-semibold rounded-lg hover:bg-yellow-700 transition-colors shadow-lg">
+          Download Marksheet (PDF)
+        </button>
       </div>
     </div>
   </div>
    
   <!-- Admin Section -->
-  <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
+  <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-xl border-t-4 border-purple-600">
     <h2 class="text-2xl font-semibold mb-4 text-gray-700">Admin Portal</h2>
+    
+    <!-- Admin Login -->
     <div id="adminLoginSection">
-      <input id="adminLoginEmail" type="email" placeholder="Admin Email" class="w-full p-2 border rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-purple-500"/>
-      <input id="adminLoginPassword" type="password" placeholder="Admin Password" class="w-full p-2 border rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-purple-500"/>
-      <button id="adminLoginButton" class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">Login</button>
+      <input id="adminLoginEmail" type="email" placeholder="Admin Email" class="w-full p-3 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-purple-500"/>
+      <input id="adminLoginPassword" type="password" placeholder="Admin Password" class="w-full p-3 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:ring-2 focus:ring-purple-500"/>
+      <button id="adminLoginButton" class="w-full px-4 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors shadow-md">Login</button>
       <p id="adminLoginError" class="text-red-600 hidden mt-2"></p>
     </div>
+    
+    <!-- Admin Panel -->
     <div id="adminPanelSection" class="hidden">
-      <div class="flex justify-between items-center mb-4">
+      <div class="flex justify-between items-center mb-4 pb-2 border-b">
         <p class="text-green-600 font-medium">Logged in as Admin</p>
         <button id="adminLogoutButton" class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">Logout</button>
       </div>
-      <label for="resultsFile" class="block text-gray-700 mb-1">Upload Results (CSV/XLSX):</label>
-      <input id="resultsFile" type="file" multiple accept=".csv,.xlsx" class="w-full p-2 border rounded-lg mb-2"/>
-      <button id="uploadResultsButton" class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">Upload Results</button>
-      <button id="clearResultsButton" class="w-full px-4 py-2 bg-red-600 text-white rounded-lg mt-2 hover:bg-red-700 transition-colors">Delete All Results</button>
-      <pre id="adminUploadStatus" class="hidden mt-4 whitespace-pre-wrap p-4 bg-gray-200 rounded-lg text-sm text-gray-800"></pre>
+      
+      <!-- Upload Section -->
+      <div class="mb-6 p-4 border rounded-lg bg-purple-50">
+          <h3 class="text-xl font-semibold mb-3 text-purple-700">Upload New Results</h3>
+          <label for="resultKeyInput" class="block text-gray-700 font-medium mb-1">Mandatory Unique Result Key (e.g., 2024_Sem4_Regular):</label>
+          <input id="resultKeyInput" type="text" placeholder="Enter Result Key" class="w-full p-3 border rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"/>
+
+          <label for="resultsFile" class="block text-gray-700 font-medium mb-1">Select Files (CSV/XLSX):</label>
+          <input id="resultsFile" type="file" multiple accept=".csv,.xlsx" class="w-full p-2 border rounded-lg mb-3 bg-white"/>
+          <button id="uploadResultsButton" class="w-full px-4 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors shadow-md">Upload Results</button>
+          <pre id="adminUploadStatus" class="hidden mt-4 whitespace-pre-wrap p-4 bg-gray-200 rounded-lg text-sm text-gray-800"></pre>
+      </div>
+
+      <!-- File List and Clear Section -->
+      <div class="p-4 border rounded-lg bg-white">
+          <h3 class="text-xl font-semibold mb-3 text-gray-700">Uploaded Files List</h3>
+          <div id="fileListDisplay" class="file-list p-3 border border-gray-300 rounded-lg bg-gray-50 text-sm text-gray-600 mb-4">
+              <p class="text-center italic">Loading file list...</p>
+          </div>
+          <button id="clearResultsButton" class="w-full px-4 py-3 bg-red-600 text-white font-semibold rounded-lg mt-2 hover:bg-red-700 transition-colors shadow-md">Delete All Results</button>
+      </div>
     </div>
   </div>
 
@@ -150,9 +165,15 @@
     let isAdminLoggedIn = false;
     let adminToken = localStorage.getItem("adminToken");
 
+    // --- Utility Functions ---
+
     function updateAdminUI(loggedIn) {
       document.getElementById("adminLoginSection").classList.toggle("hidden", loggedIn);
       document.getElementById("adminPanelSection").classList.toggle("hidden", !loggedIn);
+      if (loggedIn) {
+        // Fetch and display file list upon successful login
+        fetchUploadedFiles();
+      }
     }
 
     // Custom Modal for alerts and confirms
@@ -160,6 +181,25 @@
     const modalMessage = document.getElementById("modalMessage");
     const modalCloseBtn = document.getElementById("modalCloseBtn");
     const modalConfirmBtn = document.getElementById("modalConfirmBtn");
+    let currentConfirmCallback = null;
+
+    modalCloseBtn.onclick = () => {
+        modal.classList.add("hidden");
+        if (currentConfirmCallback) currentConfirmCallback(false);
+        currentConfirmCallback = null;
+    };
+    modalConfirmBtn.onclick = () => {
+        modal.classList.add("hidden");
+        if (currentConfirmCallback) currentConfirmCallback(true);
+        currentConfirmCallback = null;
+    };
+    modal.onclick = (e) => {
+        if (e.target.id === "customModal") {
+            modal.classList.add("hidden");
+            if (currentConfirmCallback) currentConfirmCallback(false);
+            currentConfirmCallback = null;
+        }
+    };
 
     function showAlert(message) {
       modalMessage.textContent = message;
@@ -169,114 +209,64 @@
     }
 
     function showConfirm(message, callback) {
+      currentConfirmCallback = callback;
       modalMessage.textContent = message;
       modalCloseBtn.classList.add("hidden");
       modalConfirmBtn.classList.remove("hidden");
       modal.classList.remove("hidden");
-      modalConfirmBtn.onclick = () => {
-        modal.classList.add("hidden");
-        callback(true);
-      };
-      // For any other click (like background), close the modal
-      modal.onclick = (e) => {
-        if (e.target.id === "customModal") {
-          modal.classList.add("hidden");
-          callback(false);
-        }
-      };
     }
     
-    modalCloseBtn.onclick = () => modal.classList.add("hidden");
-
     // Restore login state on page load
     if (adminToken) {
       isAdminLoggedIn = true;
       updateAdminUI(true);
     }
+    
+    // --- Admin Functions ---
 
-    // Student results view
-    document.getElementById("viewResultsButton").addEventListener("click", async () => {
-      const studentId = document.getElementById("studentIdInput").value.trim();
-      const errorBox = document.getElementById("studentResultsError");
-      const resultBox = document.getElementById("studentResultDisplay");
-      errorBox.classList.add("hidden");
-      resultBox.classList.add("hidden");
-
-      if (!studentId) {
-        errorBox.textContent = "Please enter a Student ID.";
-        errorBox.classList.remove("hidden");
-        return;
-      }
-
-      try {
-        const response = await fetch(`${BACKEND_URL}/student/results/${studentId.toUpperCase()}`);
-        const data = await response.json();
-        console.log("Fetched data:", data);
-
-        if (response.ok) {
-          document.getElementById("resultStudentName").textContent = data.name || "N/A";
-          document.getElementById("resultStudentId").textContent = data.studentId || "N/A";
-          document.getElementById("resultBranch").textContent = data.branch || "N/A";
-          document.getElementById("resultSemester").textContent = data.semester || "N/A";
-
-          // Regular Results
-          if (data.regular) {
-            document.getElementById("regularResults").classList.remove("hidden");
-            document.getElementById("regularSgpa").textContent = data.regular.sgpa || "N/A";
-            document.getElementById("regularCgpa").textContent = data.regular.cgpa || "N/A";
-            const tableBody = document.getElementById("regularSubjectsTable");
-            tableBody.innerHTML = "";
-            (data.regular.subjects || []).forEach(s => {
-              const row = document.createElement("tr");
-              row.innerHTML = `
-                <td class="py-3 px-6">${s.name}</td>
-                <td class="py-3 px-6">${s.credit}</td>
-                <td class="py-3 px-6">${s.grade}</td>
-                <td class="py-3 px-6">${s.gradePoints}</td>
-              `;
-              tableBody.appendChild(row);
-            });
-          } else {
-            document.getElementById("regularResults").classList.add("hidden");
-          }
-
-          // Supply Results
-          if (data.supply) {
-            document.getElementById("supplyResults").classList.remove("hidden");
-            document.getElementById("supplySgpa").textContent = data.supply.sgpa || "N/A";
-            document.getElementById("supplyCgpa").textContent = data.supply.cgpa || "N/A";
-            const tableBody = document.getElementById("supplySubjectsTable");
-            tableBody.innerHTML = "";
-            (data.supply.subjects || []).forEach(s => {
-              const row = document.createElement("tr");
-              row.innerHTML = `
-                <td class="py-3 px-6">${s.name}</td>
-                <td class="py-3 px-6">${s.credit}</td>
-                <td class="py-3 px-6">${s.grade}</td>
-                <td class="py-3 px-6">${s.gradePoints}</td>
-              `;
-              tableBody.appendChild(row);
-            });
-          } else {
-            document.getElementById("supplyResults").classList.add("hidden");
-          }
-          resultBox.classList.remove("hidden");
-        } else {
-          errorBox.textContent = data.error || "Failed to fetch results.";
-          errorBox.classList.remove("hidden");
+    async function fetchUploadedFiles() {
+        const fileListDisplay = document.getElementById("fileListDisplay");
+        if (!isAdminLoggedIn || !adminToken) {
+            fileListDisplay.innerHTML = '<p class="text-center italic text-red-600">Admin not logged in.</p>';
+            return;
         }
-      } catch (err) {
-        console.error("Fetch error:", err);
-        errorBox.textContent = "Error fetching results.";
-        errorBox.classList.remove("hidden");
-      }
-    });
 
+        try {
+            fileListDisplay.innerHTML = '<p class="text-center italic">Fetching uploaded files...</p>';
+            const response = await fetch(`${BACKEND_URL}/admin/uploaded_files`, {
+                headers: { "Authorization": `Bearer ${adminToken}` }
+            });
+            const files = await response.json();
+
+            if (response.ok) {
+                if (files.length === 0) {
+                    fileListDisplay.innerHTML = '<p class="text-center italic">No results files have been uploaded yet.</p>';
+                } else {
+                    const listHtml = files.map(f => {
+                        const date = new Date(f.upload_time).toLocaleString();
+                        return `<div class="p-2 border-b border-gray-200 last:border-b-0">
+                                    <p class="font-semibold text-purple-700">${f.result_key}</p>
+                                    <p class="text-xs">File: ${f.filename} | Records: ${f.total_records}</p>
+                                    <p class="text-xs italic">Uploaded: ${date}</p>
+                                </div>`;
+                    }).join('');
+                    fileListDisplay.innerHTML = listHtml;
+                }
+            } else {
+                fileListDisplay.innerHTML = `<p class="text-center italic text-red-600">Error fetching files: ${files.error || 'Unauthorized'}</p>`;
+            }
+        } catch (err) {
+            console.error("Fetch error:", err);
+            fileListDisplay.innerHTML = '<p class="text-center italic text-red-600">Error connecting to server to fetch file list.</p>';
+        }
+    }
+    
     // Admin login
     document.getElementById("adminLoginButton").addEventListener("click", async () => {
       const email = document.getElementById("adminLoginEmail").value;
       const password = document.getElementById("adminLoginPassword").value;
       const errorBox = document.getElementById("adminLoginError");
+      errorBox.classList.add("hidden");
 
       try {
         const response = await fetch(`${BACKEND_URL}/admin/login`, {
@@ -291,10 +281,6 @@
           adminToken = data.token;
           localStorage.setItem("adminToken", adminToken); // persist login
           updateAdminUI(true);
-
-          document.getElementById("adminLoginEmail").value = "";
-          document.getElementById("adminLoginPassword").value = "";
-          errorBox.classList.add("hidden");
         } else {
           errorBox.textContent = data.error || "Login failed.";
           errorBox.classList.remove("hidden");
@@ -310,22 +296,26 @@
       isAdminLoggedIn = false;
       adminToken = null;
       localStorage.removeItem("adminToken"); // clear token
-      updateAdminUI(false);
-
-      document.getElementById("adminLoginEmail").value = "";
-      document.getElementById("adminLoginPassword").value = "";
+      document.getElementById("resultKeyInput").value = "";
       document.getElementById("resultsFile").value = "";
       document.getElementById("adminUploadStatus").classList.add("hidden");
+      updateAdminUI(false);
     });
 
     // Upload results
     document.getElementById("uploadResultsButton").addEventListener("click", async () => {
+      const resultKey = document.getElementById("resultKeyInput").value.trim();
       const files = document.getElementById("resultsFile").files;
       const statusBox = document.getElementById("adminUploadStatus");
       statusBox.classList.add("hidden");
+      statusBox.textContent = "";
 
       if (!isAdminLoggedIn || !adminToken) {
         showAlert("You must be logged in as admin.");
+        return;
+      }
+      if (!resultKey) {
+        showAlert("Please enter a mandatory Unique Result Key (e.g., 2024_Sem4_Regular).");
         return;
       }
       if (!files.length) {
@@ -334,42 +324,47 @@
       }
 
       const formData = new FormData();
+      formData.append("resultKey", resultKey);
       for (let f of files) formData.append("files", f);
 
       try {
+        statusBox.textContent = "Uploading and processing files...";
+        statusBox.classList.remove("hidden");
+        
         const response = await fetch(`${BACKEND_URL}/admin/upload_results`, {
           method: "POST",
           headers: { "Authorization": `Bearer ${adminToken}` },
           body: formData
         });
         const data = await response.json();
+        
         if (response.ok) {
           let message = data.message;
           if (data.details && data.details.length > 0) {
             message += "\n\nDetails:\n" + data.details.map(d => `- ${d}`).join("\n");
           }
           statusBox.textContent = message;
-          statusBox.classList.remove("hidden");
+          fetchUploadedFiles(); // Refresh the file list
         } else {
+          statusBox.textContent = ""; // Clear temporary message
           showAlert(data.error || "Upload failed.");
         }
       } catch {
+        statusBox.textContent = ""; // Clear temporary message
         showAlert("Error uploading results.");
       }
     });
 
     // Clear results
-    document.getElementById("clearResultsButton").addEventListener("click", async () => {
+    document.getElementById("clearResultsButton").addEventListener("click", () => {
       if (!isAdminLoggedIn || !adminToken) {
         showAlert("You must be logged in as admin to clear results.");
         return;
       }
 
-      showConfirm("Are you sure you want to delete all student results? This cannot be undone.", async (confirmed) => {
-        if (!confirmed) {
-          return;
-        }
-
+      showConfirm("Are you sure you want to delete ALL student results and file records? This cannot be undone.", async (confirmed) => {
+        if (!confirmed) return;
+        
         try {
           const response = await fetch(`${BACKEND_URL}/admin/clear_results`, {
             method: "POST",
@@ -380,6 +375,7 @@
             showAlert(data.message);
             document.getElementById("adminUploadStatus").textContent = data.message;
             document.getElementById("adminUploadStatus").classList.remove("hidden");
+            fetchUploadedFiles(); // Refresh file list to show empty
           } else {
             showAlert(data.error || "Failed to clear results.");
           }
@@ -389,28 +385,143 @@
       });
     });
 
-    function updateAdminUI(loggedIn) {
-  document.getElementById("adminLoginSection").classList.toggle("hidden", loggedIn);
-  document.getElementById("adminPanelSection").classList.toggle("hidden", !loggedIn);
+    // --- Student Functions ---
 
-  if (loggedIn) {
-    // clear inputs to avoid exposing login details
-    document.getElementById("adminLoginEmail").value = "";
-    document.getElementById("adminLoginPassword").value = "";
-  }
-}
+    let currentStudentId = null;
+    
+    // Student results summary view (gets available keys)
+    document.getElementById("viewResultsButton").addEventListener("click", async () => {
+      const studentId = document.getElementById("studentIdInput").value.trim();
+      const errorBox = document.getElementById("studentResultsError");
+      const resultBox = document.getElementById("studentResultDisplay");
+      errorBox.classList.add("hidden");
+      resultBox.classList.add("hidden");
+      document.getElementById("resultDetailsArea").classList.add("hidden");
+      
+      if (!studentId) {
+        errorBox.textContent = "Please enter a Student ID.";
+        errorBox.classList.remove("hidden");
+        return;
+      }
+      currentStudentId = studentId.toUpperCase();
+      
+      try {
+        const response = await fetch(`${BACKEND_URL}/student/results/${currentStudentId}`);
+        const data = await response.json();
 
-    function downloadMarksheet(type) {
+        if (response.ok) {
+          const metadata = data.metadata || {};
+          const availableKeys = data.available_keys || [];
+          const defaultKey = data.default_key;
+
+          document.getElementById("resultStudentName").textContent = metadata.name || "N/A";
+          document.getElementById("resultStudentId").textContent = currentStudentId;
+          document.getElementById("resultBranch").textContent = metadata.branch || "N/A";
+          
+          const select = document.getElementById("availableResultsSelect");
+          const viewButton = document.getElementById("viewSelectedResultButton");
+          
+          select.innerHTML = "";
+          viewButton.disabled = true;
+
+          if (availableKeys.length === 0) {
+            select.innerHTML = '<option value="">No results available</option>';
+            showAlert(`No previous results found for ${currentStudentId}.`);
+            return;
+          }
+          
+          // Populate dropdown with available result keys
+          availableKeys.sort().reverse().forEach(key => {
+             const option = document.createElement("option");
+             option.value = key;
+             option.textContent = key;
+             select.appendChild(option);
+          });
+          
+          viewButton.disabled = false;
+          resultBox.classList.remove("hidden");
+          
+          // Automatically load the default/latest result
+          if (defaultKey) {
+             select.value = defaultKey;
+             fetchResultDetails(currentStudentId, defaultKey);
+          }
+
+        } else {
+          errorBox.textContent = data.error || "Failed to fetch results.";
+          errorBox.classList.remove("hidden");
+        }
+      } catch (err) {
+        console.error("Fetch error:", err);
+        errorBox.textContent = "Error fetching results summary.";
+        errorBox.classList.remove("hidden");
+      }
+    });
+
+    // Load selected result details
+    document.getElementById("viewSelectedResultButton").addEventListener("click", () => {
+        const resultKey = document.getElementById("availableResultsSelect").value;
+        if (currentStudentId && resultKey) {
+            fetchResultDetails(currentStudentId, resultKey);
+        }
+    });
+    
+    async function fetchResultDetails(studentId, resultKey) {
+        const detailsArea = document.getElementById("resultDetailsArea");
+        detailsArea.classList.add("hidden");
+        
+        try {
+            const response = await fetch(`${BACKEND_URL}/student/result_details/${studentId}/${resultKey}`);
+            const data = await response.json();
+
+            if (response.ok) {
+                const result = data.result;
+                
+                document.getElementById("currentResultKey").textContent = resultKey;
+                document.getElementById("resultSemester").textContent = result.semester || "N/A";
+                document.getElementById("resultSgpa").textContent = result.sgpa || "N/A";
+                document.getElementById("resultCgpa").textContent = result.cgpa || "N/A";
+                
+                const tableBody = document.getElementById("subjectsTable");
+                tableBody.innerHTML = "";
+                
+                (result.subjects || []).forEach(s => {
+                  const row = document.createElement("tr");
+                  row.className = "border-b hover:bg-gray-100";
+                  row.innerHTML = `
+                    <td class="py-3 px-6 text-left">${s.name}</td>
+                    <td class="py-3 px-6 text-center">${s.credit}</td>
+                    <td class="py-3 px-6 text-center font-bold">${s.grade}</td>
+                    <td class="py-3 px-6 text-center">${s.gradePoints}</td>
+                  `;
+                  tableBody.appendChild(row);
+                });
+                detailsArea.classList.remove("hidden");
+                
+            } else {
+                showAlert(data.error || `Failed to fetch details for key ${resultKey}.`);
+            }
+        } catch (err) {
+            console.error("Fetch error:", err);
+            showAlert("Error fetching result details.");
+        }
+    }
+
+    function downloadMarksheet() {
         const studentId = document.getElementById("resultStudentId").textContent;
-        if (!studentId || studentId === "N/A") {
-            showAlert("Please fetch a student result first.");
+        const resultKey = document.getElementById("availableResultsSelect").value;
+        
+        if (!studentId || studentId === "N/A" || !resultKey) {
+            showAlert("Please fetch and select a specific result first.");
             return;
         }
-        window.open(`${BACKEND_URL}/student/download/${studentId}/${type}`, "_blank");
+        // Use the new endpoint with the result_key
+        window.open(`${BACKEND_URL}/student/download/${studentId}/${resultKey}`, "_blank");
     }
   </script>
 </body>
 </html>
+
 
 
 
