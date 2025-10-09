@@ -262,7 +262,7 @@ def download_marksheet(student_id, result_key):
     c.setFont("Helvetica", 10)
     c.drawCentredString(width/2, height - 95, "Affiliated to Andhra University | Accredited by NAAC with B++ Grade")
     c.setFont("Helvetica-Bold", 11)
-    c.drawCentredString(width/2, height - 110, f"OFFICIAL GRADE CARD ({result_key.upper()})")
+    c.drawCentredString(width/2, height - 110, "OFFICIAL MEMORANDUM SEMESTER END GRADE CARD")
     c.setFont("Helvetica-Bold", 11)
     c.drawCentredString(width/2, height - 125, "ENGINEERING AND TECHNOLOGY PROGRAM")
 
