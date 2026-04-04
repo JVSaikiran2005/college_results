@@ -1,0 +1,2322 @@
+{
+    "uploaded_files": [
+        {
+            "result_key": "reg2",
+            "filename": "regular2.xlsx",
+            "upload_time": "2026-04-04T14:27:35.831069",
+            "total_records": 11,
+            "file_extension": "xlsx"
+        },
+        {
+            "result_key": "sup1",
+            "filename": "supply.xlsx",
+            "upload_time": "2026-04-04T14:27:47.970199",
+            "total_records": 9,
+            "file_extension": "xlsx"
+        },
+        {
+            "result_key": "reg1",
+            "filename": "regular1.xlsx",
+            "upload_time": "2026-04-04T14:28:05.095033",
+            "total_records": 9,
+            "file_extension": "xlsx"
+        },
+        {
+            "result_key": "reg5",
+            "filename": "regular5.xlsx",
+            "upload_time": "2026-04-04T14:28:16.587875",
+            "total_records": 11,
+            "file_extension": "xlsx"
+        }
+    ],
+    "student_data": {
+        "S101": {
+            "metadata": {
+                "studentId": "S101",
+                "name": "Varaha Sai",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "sup1": {
+                    "result_key": "sup1",
+                    "semester": "2",
+                    "sgpa": 9.05,
+                    "cgpa": 9.2,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        }
+                    ]
+                },
+                "reg1": {
+                    "result_key": "reg1",
+                    "semester": "2",
+                    "sgpa": 9.05,
+                    "cgpa": 9.2,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        }
+                    ]
+                }
+            }
+        },
+        "S102": {
+            "metadata": {
+                "studentId": "S102",
+                "name": "Kavya Sharma",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "sup1": {
+                    "result_key": "sup1",
+                    "semester": "2",
+                    "sgpa": 8.92,
+                    "cgpa": 9.0,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg1": {
+                    "result_key": "reg1",
+                    "semester": "2",
+                    "sgpa": 8.92,
+                    "cgpa": 9.0,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                }
+            }
+        },
+        "S103": {
+            "metadata": {
+                "studentId": "S103",
+                "name": "Rohit Kumar",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "sup1": {
+                    "result_key": "sup1",
+                    "semester": "2",
+                    "sgpa": 8.45,
+                    "cgpa": 8.6,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg1": {
+                    "result_key": "reg1",
+                    "semester": "2",
+                    "sgpa": 8.45,
+                    "cgpa": 8.6,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                }
+            }
+        },
+        "S110": {
+            "metadata": {
+                "studentId": "S110",
+                "name": "Rahul Nair",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 7.9,
+                    "cgpa": 8.0,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "C",
+                            "gradePoints": 10.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 7.9,
+                    "cgpa": 8.0,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        }
+                    ]
+                }
+            }
+        },
+        "S111": {
+            "metadata": {
+                "studentId": "S111",
+                "name": "Sneha Iyer",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 9.1,
+                    "cgpa": 9.2,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 9.1,
+                    "cgpa": 9.2,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        }
+                    ]
+                }
+            }
+        },
+        "S112": {
+            "metadata": {
+                "studentId": "S112",
+                "name": "Manoj Kumar",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 8.9,
+                    "cgpa": 8.8,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 8.9,
+                    "cgpa": 8.8,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        }
+                    ]
+                }
+            }
+        },
+        "S113": {
+            "metadata": {
+                "studentId": "S113",
+                "name": "Ritika Sharma",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 8.0,
+                    "cgpa": 8.1,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "C",
+                            "gradePoints": 10.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 8.0,
+                    "cgpa": 8.1,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        }
+                    ]
+                }
+            }
+        },
+        "S114": {
+            "metadata": {
+                "studentId": "S114",
+                "name": "Naveen Ch",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 9.05,
+                    "cgpa": 9.2,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 9.05,
+                    "cgpa": 9.2,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        }
+                    ]
+                }
+            }
+        },
+        "S115": {
+            "metadata": {
+                "studentId": "S115",
+                "name": "Divya S",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 8.1,
+                    "cgpa": 8.0,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "C",
+                            "gradePoints": 10.5
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 8.1,
+                    "cgpa": 8.0,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        }
+                    ]
+                }
+            }
+        },
+        "S116": {
+            "metadata": {
+                "studentId": "S116",
+                "name": "Aditya R",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 8.2,
+                    "cgpa": 8.3,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "C",
+                            "gradePoints": 10.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "sup1": {
+                    "result_key": "sup1",
+                    "semester": "2",
+                    "sgpa": 8.2,
+                    "cgpa": 8.3,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "C",
+                            "gradePoints": 10.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 8.2,
+                    "cgpa": 8.3,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        }
+                    ]
+                }
+            }
+        },
+        "S117": {
+            "metadata": {
+                "studentId": "S117",
+                "name": "Pooja K",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 8.8,
+                    "cgpa": 9.0,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        }
+                    ]
+                },
+                "sup1": {
+                    "result_key": "sup1",
+                    "semester": "2",
+                    "sgpa": 8.8,
+                    "cgpa": 9.0,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 8.8,
+                    "cgpa": 9.0,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        }
+                    ]
+                }
+            }
+        },
+        "S118": {
+            "metadata": {
+                "studentId": "S118",
+                "name": "Vikram S",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 8.1,
+                    "cgpa": 8.2,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "sup1": {
+                    "result_key": "sup1",
+                    "semester": "2",
+                    "sgpa": 8.1,
+                    "cgpa": 8.2,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 8.1,
+                    "cgpa": 8.2,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        }
+                    ]
+                }
+            }
+        },
+        "S119": {
+            "metadata": {
+                "studentId": "S119",
+                "name": "Shivani P",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 9.3,
+                    "cgpa": 9.4,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "sup1": {
+                    "result_key": "sup1",
+                    "semester": "2",
+                    "sgpa": 9.3,
+                    "cgpa": 9.4,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 9.3,
+                    "cgpa": 9.4,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        }
+                    ]
+                }
+            }
+        },
+        "S120": {
+            "metadata": {
+                "studentId": "S120",
+                "name": "Kiran L",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg2": {
+                    "result_key": "reg2",
+                    "semester": "2",
+                    "sgpa": 7.9,
+                    "cgpa": 8.0,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "C",
+                            "gradePoints": 10.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "sup1": {
+                    "result_key": "sup1",
+                    "semester": "2",
+                    "sgpa": 7.9,
+                    "cgpa": 8.0,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "C",
+                            "gradePoints": 10.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg5": {
+                    "result_key": "reg5",
+                    "semester": "2",
+                    "sgpa": 7.9,
+                    "cgpa": 8.0,
+                    "subjects": [
+                        {
+                            "name": "Database_Management_Systems",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "OOPS_through_Java",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Operating_Systems",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Computer_Networks",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Web_Technologies",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Software_Engineering",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        }
+                    ]
+                }
+            }
+        },
+        "S104": {
+            "metadata": {
+                "studentId": "S104",
+                "name": "Priya Reddy",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "sup1": {
+                    "result_key": "sup1",
+                    "semester": "2",
+                    "sgpa": 9.0,
+                    "cgpa": 9.1,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                },
+                "reg1": {
+                    "result_key": "reg1",
+                    "semester": "2",
+                    "sgpa": 9.0,
+                    "cgpa": 9.1,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                }
+            }
+        },
+        "S105": {
+            "metadata": {
+                "studentId": "S105",
+                "name": "Anjali Verma",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg1": {
+                    "result_key": "reg1",
+                    "semester": "2",
+                    "sgpa": 8.75,
+                    "cgpa": 8.8,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        }
+                    ]
+                }
+            }
+        },
+        "S106": {
+            "metadata": {
+                "studentId": "S106",
+                "name": "Suresh Babu",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg1": {
+                    "result_key": "reg1",
+                    "semester": "2",
+                    "sgpa": 8.05,
+                    "cgpa": 8.2,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        }
+                    ]
+                }
+            }
+        },
+        "S107": {
+            "metadata": {
+                "studentId": "S107",
+                "name": "Meena Gupta",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg1": {
+                    "result_key": "reg1",
+                    "semester": "2",
+                    "sgpa": 8.95,
+                    "cgpa": 9.1,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                }
+            }
+        },
+        "S108": {
+            "metadata": {
+                "studentId": "S108",
+                "name": "Arjun Patel",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg1": {
+                    "result_key": "reg1",
+                    "semester": "2",
+                    "sgpa": 8.1,
+                    "cgpa": 8.0,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "C",
+                            "gradePoints": 21
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "B",
+                            "gradePoints": 12.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "C",
+                            "gradePoints": 10.5
+                        }
+                    ]
+                }
+            }
+        },
+        "S109": {
+            "metadata": {
+                "studentId": "S109",
+                "name": "Deepika Rao",
+                "branch": "CSE-AIML"
+            },
+            "results": {
+                "reg1": {
+                    "result_key": "reg1",
+                    "semester": "2",
+                    "sgpa": 8.9,
+                    "cgpa": 9.0,
+                    "subjects": [
+                        {
+                            "name": "Engineering_Mathematics-II",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Graphics",
+                            "credit": 3,
+                            "grade": "A+",
+                            "gradePoints": 30
+                        },
+                        {
+                            "name": "Data_Structures_Using_C",
+                            "credit": 3,
+                            "grade": "B",
+                            "gradePoints": 24
+                        },
+                        {
+                            "name": "Discrete_Mathematical_Structures",
+                            "credit": 3,
+                            "grade": "A",
+                            "gradePoints": 27
+                        },
+                        {
+                            "name": "Engineering_Physics_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        },
+                        {
+                            "name": "Data_Structures_Lab",
+                            "credit": 1,
+                            "grade": "A+",
+                            "gradePoints": 15.0
+                        },
+                        {
+                            "name": "IT_Workshop_Lab",
+                            "credit": 1,
+                            "grade": "A",
+                            "gradePoints": 13.5
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

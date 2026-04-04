@@ -351,12 +351,12 @@
           statusBox.textContent = message;
           fetchUploadedFiles(); // Refresh the file list
         } else {
-          statusBox.textContent = ""; // Clear temporary message
+          statusBox.textContent = "Upload Failed:\n" + (data.error || "Unknown error occurred.");
           showAlert(data.error || "Upload failed.");
         }
-      } catch {
-        statusBox.textContent = ""; // Clear temporary message
-        showAlert("Error uploading results.");
+      } catch (err) {
+        statusBox.textContent = "Upload Error:\n" + (err.message || "Connection error while uploading.");
+        showAlert("Error uploading results: " + (err.message || "Connection failed"));
       }
     });
 

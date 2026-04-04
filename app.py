@@ -11,7 +11,19 @@ from reportlab.lib import colors
 from datetime import datetime
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, 
+     resources={r"/admin/*": {"origins": "*"}, r"/student/*": {"origins": "*"}},
+     methods=["GET", "POST", "DELETE", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization"],
+     expose_headers=["Content-Type", "Content-Disposition"])
+
+# Additional CORS handling for preflight requests
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
 
 # Allow large uploads (e.g., up to 200 MB) — adjust if you want bigger/smaller limits
 app.config['MAX_CONTENT_LENGTH'] = 200 * 1024 * 1024  # 200 MB
@@ -97,14 +109,19 @@ def upload_results():
                 continue
             file_extension = filename.rsplit('.', 1)[1].lower()
 
-            # Read CSV more memory-efficiently where possible using the file stream
+            # Read file content
+            content = file.read()
+            if not content:
+                messages.append(f"Skipped {filename} (empty file).")
+                continue
+
+            # Parse based on file type
             if file_extension == 'csv':
-                # Use TextIOWrapper on file.stream so pandas can stream-read if needed
-                text_stream = TextIOWrapper(file.stream, encoding='utf-8', errors='replace')
-                df = pd.read_csv(text_stream)
+                # For CSV: decode bytes to string and read with pandas
+                text_content = content.decode('utf-8', errors='replace')
+                df = pd.read_csv(StringIO(text_content))
             elif file_extension in ['xls', 'xlsx']:
-                # For Excel, read into BytesIO (pandas needs bytes)
-                content = file.read()
+                # For Excel: read into BytesIO
                 df = pd.read_excel(BytesIO(content))
             else:
                 messages.append(f"Skipped {filename} (unsupported format).")
